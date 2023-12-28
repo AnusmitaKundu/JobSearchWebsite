@@ -1,0 +1,65 @@
+.front-page {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .redirect-links a {
+    display: inline;
+    margin: 10px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #333;
+    gap: 50rem;
+    transition: color 0.3s;
+  }
+  
+  .redirect-links a:hover {
+    color: #007bff;
+  }
+  
+/* Styling for the container div */
+.redirect-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  /* Styling for the buttons */
+  .redirect-links button {
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .redirect-links button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Styling for the links */
+  .redirect-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+  }
+  
+  .redirect-links a:hover {
+    color: #ffffff;
+  }
+
+  /* #logout{ 
+    color: black;
+    background-color: blue;
+    background-size: 30px 20px;
+  }
+   */
