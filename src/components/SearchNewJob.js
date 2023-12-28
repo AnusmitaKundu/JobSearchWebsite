@@ -3,12 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import Card from "react-bootstrap/Card";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { jwtDecode } from "jwt-decode";
-
-// import fetchuser from "../../Backend/middleware/fetchuser";
-// import { Jwt } from "jsonwebtoken";
+import Alert from './Alert';
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
+  const [alert, setAlert] = useState(null);
   const history = useNavigate();
 
   const fetchJobs = async () => {
@@ -43,7 +42,17 @@ const JobList = () => {
     fetchJobs();
   }, []);
 
-  const whenOnClick = async (job)  => {
+  const showAlert = (msg, type) => {
+    setAlert({
+      msg: msg,
+      type: type,
+    });
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  };
+
+  const whenOnClick = async (job) => {
     const token = localStorage.getItem('token');
 
     try {
@@ -64,11 +73,14 @@ const JobList = () => {
 
       if (response.ok) {
         console.log(data.message);
+        showAlert('Job saved successfully', 'success');
       } else {
         console.error(data.error);
+        showAlert('Job already saved', 'info');
       }
     } catch (error) {
       console.error('Error saving job:', error);
+      showAlert('Error saving job', 'warning');
     }
   };
 
@@ -79,6 +91,9 @@ const JobList = () => {
 
   return (
     <div className="container">
+      {/* Display the Alert component and pass the alert state */}
+      <Alert alert={alert} />
+
       <h2 className="my-3">Job Listings</h2>
       <button type="button" className="btn btn-primary my-3 float-right" id='logout' onClick={whenOnClicklogout}>Log Out</button>
       <div className="row">
