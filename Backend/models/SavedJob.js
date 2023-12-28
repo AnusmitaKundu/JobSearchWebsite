@@ -24,7 +24,11 @@ savedJobSchema.pre('save', async function (next) {
     'jobData.url': this.jobData.url,
   });
 
-  if (existingJob) {
+  const existingJobUser = await this.constructor.findOne({
+    'user': this.User,
+  })
+
+  if ((existingJob) || (existingJobUser)) {
     // If a job with the same url exists, don't save the current document
     const error = new Error('Job with the same URL already exists');
     return next(error);

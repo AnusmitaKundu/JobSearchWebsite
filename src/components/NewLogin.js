@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Alert from './Alert';
-
 import './NewLogin1.css';
-
 function NewLogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
